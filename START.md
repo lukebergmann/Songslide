@@ -1,4 +1,4 @@
-Josiah Pilon, 
+
 #BUY AND SELL
 
 Requirements:
@@ -39,3 +39,4 @@ Non-Profit Music Platform for Emerging Artists
 //5. Song previews - 3x 10sec  
 //6. Sort by genre
 
+Josiah Pilon, 
