@@ -40,3 +40,5 @@ Non-Profit Music Platform for Emerging Artists
 //6. Sort by genre
 
 Josiah Pilon, 
+Luke Bergmann, 
+
