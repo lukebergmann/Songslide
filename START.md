@@ -41,4 +41,4 @@ Non-Profit Music Platform for Emerging Artists
 
 Josiah Pilon, 
 Luke Bergmann, 
-
+Farouk Alsajee,
