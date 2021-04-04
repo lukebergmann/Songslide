@@ -1,0 +1,43 @@
+INSERT INTO users (
+  username,
+  email,
+  password,
+  card_number,
+  artist_id
+)
+
+VALUES (
+  'jo-jo-sigh-a',
+  'itsjosiah98@gmail.com',
+  '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.',
+  '1234-5678-9876-5432',
+  1
+),
+(
+  'lukey-in-the-sky',
+  'lukeylucy@gmail.com',
+  '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.',
+  '1334-5678-9876-5432',
+  2
+),
+(
+  'faroukplaystheoud',
+  'farouk.oud@gmail.com',
+  '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.',
+  '1434-5678-9876-5432',
+  3
+),
+(
+  'bongobill',
+  'thebongoguy@gmail.com',
+  '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.',
+  '1534-5678-9876-5432',
+  NULL
+),
+(
+  'diane-the-drummer',
+  'drummer.d@gmail.com',
+  '$2a$10$FB/BOAVhpuLvpOREQVmvmezD4ED/.JBIDRh70tGevYzYzQgFId2u.',
+  '1634-5678-9876-5432',
+  NULL
+);
