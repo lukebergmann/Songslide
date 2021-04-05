@@ -6,6 +6,18 @@ const db = new Pool(dbParams);
 db.connect();
 
 
+router.get("/", (req, res) => {
+  const templateVars = {};
+  db.query('SELECT * FROM songs')
+  .then((result)=> {
+    console.log(result.rows);
+    templateVars.songs = result.rows;
+    res.render("homepage", templateVars);
+
+  })
+  .catch((error) => {console.log(error.message)});
+});
+
 // this displays all songs
 router.get("/", (req, res) => {
   console.log('>>>>>>>14');

@@ -48,17 +48,7 @@ app.use('/songs', songRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-app.get("/", (req, res) => {
-  const templateVars = {};
-  db.query('SELECT * FROM songs')
-  .then((result)=> {
-    console.log(result.rows);
-    templateVars.songs = result.rows;
-    res.render("homepage", templateVars);
 
-  })
-  .catch((error) => {console.log(error.message)});
-});
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
