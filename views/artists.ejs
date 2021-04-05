@@ -20,5 +20,27 @@
 <body>
   <%-include('./partials/_headers') %>
   <button type="submit">Upload</button>
+      <div class="headerContainer">
+        <h4>This is SOUNDSLIDE. A non-profit music uploading platform for emerging artists. Choose how much you want to
+          pay for a song. All purchases go into the pockets of the artist. </h4>
+        <button type="submit">POST A TRACK</button>
+      </div>
+      <div class="songContainer">
+
+          <% for (let artist of artists){  %>
+
+            <div> <%= artist.name %> <b>(<%= artist.genre %>)</b>
+              <div>
+                <%= artist.bio %>
+              </div>
+
+            </div>
+
+          <% } %>
+
+
+      </div>
+
+
 </body>
 </html>
