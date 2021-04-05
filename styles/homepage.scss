@@ -1,0 +1,32 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 170px;
+  background-color: #75cfb8;
+  margin: 3%;
+  font-family:  'Bungee', sans-serif;
+  color: white;
+
+  h4 {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 600;
+    margin: 1% 10%;
+  }
+
+ button {
+  width: 10%;
+  margin-left: 45%;
+  background-color: white;
+  border: none;
+  border-radius: 5%;
+  color: #75cfb8;
+}
+
+button:hover {
+  background-color: #f88f01;
+  color: white;
+}
+
+}
