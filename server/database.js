@@ -4,7 +4,7 @@
 
 
 
-// HOMEPAGE
+// HOME PAGE
 // select all songs of a genre rock
 // select all songs of a genre jazz
 // select all songs of a genre rap/hiphop
