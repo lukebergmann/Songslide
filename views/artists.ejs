@@ -19,6 +19,22 @@
 </head>
 <body>
   <%-include('./partials/_headers') %>
+  <form method="" action="">
+    <input type="file" id="trackImg" name="trackimage" accept="image/*">
+    <div class="rightSide">
+    <input type="file" placeholder="Upload Your Track"/>
+    <input type="text" placeholder="Name Your Track"/>
+    <select id="genre" name="genre">
+      <option value="Rock">Rock</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Blues">Blues</option>
+      <option value="Punk Rock">Punk Rock</option>
+      <option value="Electronic">Electronic</option>
+      <option value="Metal">Metal</option>
+    </select>
+    <input type="text" placeholder="Track Discription"/>
+  </div>
+  </form>
   <button type="submit">Upload</button>
 </body>
 </html>
