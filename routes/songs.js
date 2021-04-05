@@ -5,10 +5,6 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
-// get/ provides the list of all songs available
-// router.get("/", (req, res) => {
-// res.render("homepage");
-// });
 
 router.get("/", (req, res) => {
   const templateVars = {};
@@ -50,7 +46,7 @@ router.get("/forsale", (req, res) => {
   .catch((error) => {console.log(error.message)});
 });
 
-// For sale
+// shows artists works and info
 router.get("/artists", (req, res) => {
   // console.log('>>>>>>>14');
   const templateVars = {};
@@ -64,41 +60,9 @@ router.get("/artists", (req, res) => {
   .catch((error) => {console.log(error.message)});
 });
 
-//get/new to desplay the songs for sale
-//post/ to post to songs
-
-
-
-/*
-router.get("/:id", (req, res) => {
-  let selectedSongs = req.params.id;
-  console.log('>>>>', selectedSongs);
-});
-console.log('>>>>>>>>>');
-const songId = selectedSongs.song_id;
-songs[songId] = {};
-songs[songId].song_name = selectedSongs.song_name;
-songs[songId].price = selectedSongs.price;
-songs[songId].duration = selectedSongs.duration;
-songs[songId].user_id = selectedSongs.user_id;
-songs[songId].artist_id = selectedSongs.artist_id;
-
-res.end();
-
-  non-AJAX route; returns full page of HTML
-  router.get("/:id", (req, res) => {
-    res.render("checkout");
-  });
-
-  // JSON-only route for AJAX GET
-  router.get("/:id", (req, res) => {
-    res.json({ selectedSongs });
-  });
-
-
-
- // Updates a song
+// Updates a song
   router.put("/:id", (req, res) => {
+    console.log('updaaaate');
     db.query(`
       UPDATE songs
       SET song_name = $1,
@@ -114,7 +78,8 @@ res.end();
           request.body.duration,
           request.body.user_id,
           request.body.artist_id ])
-    .then(({ rows: songs }) => { response.json(songs) })
+    .then(({ rows: songs }) => { response.json(songs);
+    })
     .catch(e => console.error(e.stack));
     console.log('>>33>>', songs);
 
@@ -122,6 +87,8 @@ res.end();
 
   // // Creates a new song
   router.post("/songs/new", (request, response) => {
+    console.log('Creaaate');
+
     db.query(`
       INSERT INTO songs (song_name, price, duration, user_id, artist_id )
         VALUES ( $1, $2, $3, $4, $5 )
@@ -138,19 +105,20 @@ res.end();
 
 
   // deletes a song
-  router.post("/:id/delete", (request, response) => {
+  router.post("/", (request, response) => {
+    console.log('deleeeeeete');
+
   db.query(`
       DELETE FROM songs WHERE id = $1;
       `, [ request.params.id ])
     .then((result) => {
       if (result.rowCount !== 0) {
-        response.status(200).json({message: "song deleted successfully"});
+        response.status(200)({message: "song deleted successfully"});
       } else {
-        response.status(204).json({message: "song not found."});
+        response.status(204)({message: "song not found."});
       }
     })
     .catch(e => console.error(e.stack));
 });
 
-*/
 module.exports = router;
