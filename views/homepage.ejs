@@ -28,7 +28,14 @@
       <button type="submit">POST A TRACK</button>
     </div>
     <div class="songContainer">
+      <ul>
+        <% for (let song of songs){  %>
 
+          <li> <%= song.song_name %> </li>
+
+        <% } %>
+
+      </ul>
     </div>
 
 </body>
