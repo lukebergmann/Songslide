@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/artists.css" type="text/css" />
   <!-- Bootstrap -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
   integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
@@ -19,12 +20,26 @@
 </head>
 <body>
   <%-include('./partials/_headers') %>
-  <button type="submit">Upload</button>
-      <div class="headerContainer">
-        <h4>This is SOUNDSLIDE. A non-profit music uploading platform for emerging artists. Choose how much you want to
-          pay for a song. All purchases go into the pockets of the artist. </h4>
-        <button type="submit">POST A TRACK</button>
-      </div>
+  <div id="uploadSong">
+  <form method="" action="">
+    <input type="file" id="trackImg" name="trackimage" accept="image/*">
+    <div class="rightSide">
+    <input type="file" placeholder="Upload Your Track"/>
+    <input type="text" placeholder="Name Your Track"/>
+    <select id="genre" name="genre">
+      <option value="Rock">Rock</option>
+      <option value="Jazz">Jazz</option>
+      <option value="Blues">Blues</option>
+      <option value="Punk Rock">Punk Rock</option>
+      <option value="Electronic">Electronic</option>
+      <option value="Metal">Metal</option>
+    </select>
+    <input type="text" placeholder="Track Discription"/>
+    <button type="submit">Upload</button>
+  </div>
+  </form>
+</div>
+
       <div class="songContainer">
 
           <% for (let artist of artists){  %>
