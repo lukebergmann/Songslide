@@ -8,16 +8,20 @@ module.exports = db => {
   if (SONG === "songs") {
     router.get("/orders", (request, response) => {
       db.query(`SELECT * FROM songs`)
-        .then(({ rows: orders }) => {response.status(200).json(orders)})
-      .catch(e => console.error(e.stack));
+        .then(({ rows: orders }) => {
+          response.status(200).json(orders);
+        })
+        .catch(e => console.error(e.stack));
     });
   }
 
   // shows a specific order
   router.get("/carts/:id", (request, response) => {
     db.query(`SELECT * FROM songs`, [ request.params.id ])
-    .then(({ rows: orders }) => {response.status(200).json(orders)})
-    .catch(e => console.error(e.stack));
+      .then(({ rows: orders }) => {
+        response.status(200).json(orders);
+      })
+      .catch(e => console.error(e.stack));
   });
 
   return router;
