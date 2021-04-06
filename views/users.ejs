@@ -20,5 +20,16 @@
 <body>
   <%-include('./partials/_headers') %>
   <button type="submit">Add To Cart</button>
+
+  <div class="songContainer">
+
+    <% for (let user of users){  %>
+
+      <li> <%= user.username %>  </li>
+
+    <% } %>
+
+
+</div>
 </body>
 </html>
