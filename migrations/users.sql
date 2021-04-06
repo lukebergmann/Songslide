@@ -8,3 +8,6 @@ CREATE TABLE users (
   card_number VARCHAR (30),
   artist_id INTEGER DEFAULT NULL REFERENCES artists(id) ON DELETE CASCADE
 );
+
+
+-- How come there is an artists id in the users table?
