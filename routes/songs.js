@@ -28,25 +28,13 @@ db.connect();
 //   // templateVars.songs = getSongsByGenre(id);
 // });
 
-router.get("/", (req, res) => {
-  const templateVars = {};
-  db.query('SELECT * FROM songs')
-    .then((result)=> {
-      console.log(result.rows);
-      templateVars.songs = result.rows;
-      res.render("homepage", templateVars);
 
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
-});
-
-// // this displays all songs
+// this displays all info on the homepage
 router.get("/", (req, res) => {
   console.log('>>>>>>>14');
-  const templateVars = {};
-  db.query('SELECT * FROM songs')
+  let templateVars = {};
+  db.query(`SELECT * FROM songs
+  JOIN artists ON artist_id = artists.id`)
     .then((result)=> {
       console.log(result.rows);
       templateVars.songs = result.rows;
@@ -58,7 +46,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// For sale
+// Songs for sale
 router.get("/forsale", (req, res) => {
   // console.log('>>>>>>>14');
   const templateVars = {};
@@ -116,8 +104,9 @@ router.put("/:id", (req, res) => {
 
 });
 
-// // Creates a new song
-router.post("/songs/new", (request, response) => {
+// Once the artist submits the form artist gets redirected to songs page
+// adds a new song
+router.post("/artists", (request, response) => {
   console.log('Creaaate');
 
   db.query(`
@@ -133,6 +122,7 @@ router.post("/songs/new", (request, response) => {
       response.status(201).json(songs);
     })
     .catch(e => console.error(e.stack));
+    res.redirect("/songs");
 });
 
 
@@ -150,6 +140,18 @@ router.post("/", (request, response) => {
         response.status(204)({message: "song not found."});
       }
     })
+    .catch(e => console.error(e.stack));
+});
+
+
+  // gets info about one song
+  router.get("/", (request, response) => {
+      console.log('sooooong');
+    db.query(`
+      SELECT *
+      FROM songs
+      WHERE songs = $1`, [request.params.id])
+    .then(({ rows: songs }) => { response.status(200).json(songs) })
     .catch(e => console.error(e.stack));
 });
 
