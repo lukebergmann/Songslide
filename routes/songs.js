@@ -5,6 +5,28 @@ const dbParams = require('../lib/db.js');
 const db = new Pool(dbParams);
 db.connect();
 
+// const {
+//   getSongsByGenre,
+//   getBioByArtist,
+//   getSongsByAlbum,
+//   getSongsByArtist,
+//   getSongsByPrice,
+//   getUsersSongs,
+//   getUsersSongsByArtist,
+//   getUsersFavoriteSongs,
+//   getUsersFavoriteSongsByArtits,
+//   getUsersFavoriteSongsByAlbum,
+//   getUsersFavoriteSongsByGenre,
+//   getArtistsSongs
+// } = require("../server/database");
+
+// cant find solution
+// router.get("/:id", (req, res) => {
+//   const id = req.params.id
+//   console.log("id:", id);
+//   getSongsByGenre(id);
+//   // templateVars.songs = getSongsByGenre(id);
+// });
 
 router.get("/", (req, res) => {
   const templateVars = {};
@@ -20,7 +42,7 @@ router.get("/", (req, res) => {
     });
 });
 
-// this displays all songs
+// // this displays all songs
 router.get("/", (req, res) => {
   console.log('>>>>>>>14');
   const templateVars = {};
