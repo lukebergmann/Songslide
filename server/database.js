@@ -1,7 +1,9 @@
-// example get request
-// app.get("library/:username/:artist", (req, res) => {})
-// app.get("library/:username/:genre", (req, res) => {})
-
+const express = require('express');
+const router = express.Router();
+const { Pool } = require('pg');
+const dbParams = require('../lib/db.js');
+const db = new Pool(dbParams);
+db.connect();
 
 // HOME PAGE
 // select all songs of a genre rock
@@ -14,18 +16,19 @@
 // ** do I need % around token
 
 
-
 // select all songs by genre
 const getSongsByGenre = function(genre) {
-  return Pool.query(`
+  return db.query(`
   SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
   FROM songs
   JOIN artists ON artists.id = artist_id
   WHERE genre = $1
   ORDER BY price
   LIMIT 5;`, genre)
-    .then(res => {
-      return res.rows;
+    .then(result => {
+      templateVars = result.rows;
+      console.log("temp", templateVars);
+      // res.render("homepage", templateVars);
     })
     .catch(err => {
       return undefined;
@@ -48,21 +51,21 @@ const getBioByArtist = function(artist) {
 
 // select songs by album
 // **confused about this one. Id have to Join 3 tables to return album**
-const getSongsByAlbum = function(album) {
-  return Pool.query(`
-  SELECT songs.title AS song_title, songs.artist AS artist_name, artists.album AS album, songs.duration AS duration, songs.price AS price
-  From songs
-  JOIN artists ON artists.id = artist_id
-  WHERE album = $1
-  ORDER BY songs.title;
-  `, album)
-    .then(res => {
-      return res.rows;
-    })
-    .catch(err => {
-      return undefined;
-    })
-}
+// const getSongsByAlbum = function(album) {
+//   return Pool.query(`
+//   SELECT songs.title AS song_title, songs.artist AS artist_name, artists.album AS album, songs.duration AS duration, songs.price AS price
+//   From songs
+//   JOIN artists ON artists.id = artist_id
+//   WHERE album = $1
+//   ORDER BY songs.title;
+//   `, album)
+//     .then(res => {
+//       return res.rows;
+//     })
+//     .catch(err => {
+//       return undefined;
+//     })
+// }
 
 
 // select all songs of an artist
@@ -144,7 +147,7 @@ const getUsersSongsByArtist = function(id, name) {
     })
 };
 
-// ** change favorites.song to favorites.title **
+
 // users favorite songs
 const getUsersFavoriteSongs = function(id) {
   return Pool.query(`
@@ -238,7 +241,7 @@ const getArtistsSongs = function(name) {
 module.exports = {
   getSongsByGenre,
   getBioByArtist,
-  getSongsByAlbum,
+  // getSongsByAlbum,
   getSongsByArtist,
   getSongsByPrice,
   getUsersSongs,
