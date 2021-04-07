@@ -11,13 +11,14 @@
   <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
 
   <!-- carousel css -->
-  <link rel="stylesheet" href="/styles/carousel.css" />
+  <!-- <link rel="stylesheet" href="/styles/carousel.css" /> -->
   <!-- carousel script -->
   <script src="/scripts/carousel.js"></script>
 
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;0,700;1,300;1,700&display=swap"
@@ -37,27 +38,27 @@
     <div id="wrapper">
       <div id="carousel">
         <div id="content">
-          <% for (let song of songs){  %>
-          <img
-            class="item"
-            src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
-          />
-          <!--
-          <img
-          class="item"
-          src= <%=song.url%>
-          />
-          -->
-
-
-          <div>
-            <li> <%= song.song_name %> </li>
-            <li> <%= song.name %> </li>
-            <li> <%= song.price %> </li>
-            <li> <%= song.duration %> </li>
+        <% for (let song of songs){  %>
+          <div id="art_and_info">
+            <div>
+              <img
+              class="item"
+              src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+              />
+            </div>
+            <div class="song_info">
+              <li> <%= song.song_name %> </li>
+              <li> <%= song.name %> </li>
+              <li> <%= song.price %> </li>
+              <li> <%= song.duration %> </li>
+              <li>downloaded n times</li>
+              <form action="/users/:id" method="POST">
+                <button type="submit" action class="btn btn-primary">purchase</button>
+              </form>
+            </div>
           </div>
-          <% } %>
-        </div>
+            <% } %>
+          </div>
       </div>
       <button id="prev">
         <svg
