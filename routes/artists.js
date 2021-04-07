@@ -23,7 +23,6 @@ module.exports = db => {
 
 
 
-
   // POST request that submits the new song upload info to the database (redirect to homepage)
   router.post("/", (request, response) => {
     console.log('Creaaate');
@@ -56,6 +55,11 @@ module.exports = db => {
     })
     .catch(e => console.error(e.stack));
   });
+
+
+
   return router;
 
-}
+};
+
+

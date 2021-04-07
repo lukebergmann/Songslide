@@ -7,8 +7,13 @@ module.exports = db => {
   // POST request that adds a song to their users page where they can checkout
   // POST request that allows a user to favorite a song
 
+
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
+
+
+
   router.get("/", (req, res) => {
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`SELECT * FROM songs
     JOIN artists ON artists.id = artist_id`)
@@ -25,6 +30,7 @@ module.exports = db => {
 
   router.get("/genre/:genre", (req, res) => {
     const genre = req.params.genre;
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
       SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
@@ -34,14 +40,18 @@ module.exports = db => {
       ORDER BY price
       LIMIT 5;`, [genre])
       .then((result) => {
+        console.log(result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
 
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
       SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
@@ -51,51 +61,28 @@ module.exports = db => {
       ORDER BY songs.song_name
       LIMIT 5;`, [artist])
       .then((result) => {
+        console.log(result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
 
 
-  // POST request that allows a user to favorite a song
-  // router.post('/', (req, res) => {
-  //   let song = req.body;
-  //   saveSongs(song)
-  //     .then((response) => {
-  //       res.status(201).send(response);
-  //     });
-  // });
 
-  //
-  // Everything below was uncommented but it was producing an error for me. So I commented it to be able to run server. From Josiah
-  //
-
-  // POST request to save song
-  // app.post('/', (req, res) => {
-  //   let song = req.body;
-  //   saveSongs(song)
-  //     .then((response) => {
-  //       res.status(201).send(response);
-  //     })
-  //     .catch((err) => {
-  //       res.status(404).send(err);
-  //   });
-  // })
-
-
-
-    // GET request to get favorite songs saved in the database
-    // app.post('/', (req, res) => {
-    //   getFavorites()
-    //     .then((response) => {
-    //       res.status(201).send(response);
-    //     })
-    //     .catch((err) => {
-    //       res.status(404).send(err);
-    //   });
-    // })
-
+  // GET request to get songs that match the genre that was typed in
+  router.get('/', (req, res) => {
+    let genre = req.query;
+    if (genre) {
+      console.log('Error in GET/: ', genre);
+      res.status(404).send(genre);
+    } else {
+      res.status(200).send(genre);
+    }
+  });
 
   return router;
-}
+
+};
