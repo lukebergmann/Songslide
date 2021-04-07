@@ -21,7 +21,10 @@ module.exports = db => {
       });
   });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 
 
   // POST request that submits the new song upload info to the database (redirect to homepage)
@@ -31,10 +34,20 @@ module.exports = db => {
     db.query(`
     INSERT INTO songs (thumbnail_photo_url, song_url, song_name, )
       VALUES ( $1, $2, $3, $4, $5 )
+<<<<<<< HEAD
     RETURNING *;
     `), ([request.body.song_name,
     ])
       .then(({ rows: songs }) => {
+=======
+      RETURNING *;
+    `, [request.body.song_name,
+      request.body.price,
+    request.body.duration,
+    request.body.user_id,
+    request.body.artist_id,])
+    .then(({ rows: songs }) => {
+>>>>>>> master
         response.status(201).json(songs);
       })
       .catch(e => console.error(e.stack));
@@ -44,20 +57,28 @@ module.exports = db => {
   // POST request that allows the artist to delete a song from their page
   router.post("/", (request, response) => {
     console.log('deleeeeeete');
-
     db.query(`
-      DELETE FROM songs WHERE id = $1;
-      `, [request.params.id])
-      .then((result) => {
-        if (result.rowCount !== 0) {
-          response.status(200)({ message: "song deleted successfully" });
-        } else {
-          response.status(204)({ message: "song not found." });
-        }
-      })
-      .catch(e => console.error(e.stack));
+    DELETE FROM songs WHERE id = $1;
+    `, [request.params.id])
+    .then((result) => {
+      if (result.rowCount !== 0) {
+        response.status(200)({ message: "song deleted successfully" });
+      } else {
+        response.status(204)({ message: "song not found." });
+      }
+    })
+    .catch(e => console.error(e.stack));
   });
+<<<<<<< HEAD
   return router;
+=======
+
+<<<<<<< HEAD
+  return router;
+}
+=======
+>>>>>>> master
 };
+>>>>>>> songs
 
 

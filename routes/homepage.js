@@ -44,6 +44,10 @@ module.exports = db => {
       .catch((error) => { console.log(error.message) });
   });
 
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> master
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
     console.log('>>>>>>>14');
@@ -62,6 +66,7 @@ module.exports = db => {
       })
       .catch((error) => { console.log(error.message) });
   });
+<<<<<<< HEAD
 
   // POST request that allows a user to favorite a song
   // router.post('/', (req, res) => {
@@ -71,6 +76,28 @@ module.exports = db => {
   //       res.status(201).send(response);
   //     });
   // });
+=======
+=======
+  // POST request to save song
+  app.post('/', (req, res) => {
+    let song = req.body;
+    saveSongs(song)
+      .then((response) => {
+        res.status(201).send(response);
+
+    });
+
+    // GET request to get favorite songs saved in the database
+    app.post('/', (req, res) => {
+        getFavorites()
+        .then((response) => {
+          res.status(201).send(response);
+        })
+        .catch((err) => {
+          res.status(404).send(err);
+      });
+>>>>>>> songs
+>>>>>>> master
 
   return router;
 
