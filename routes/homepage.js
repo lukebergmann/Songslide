@@ -19,13 +19,30 @@ module.exports = db => {
         res.render("homepage", templateVars);
 
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+
   });
 
 
+  // POST request to save song
+  app.post('/', (req, res) => {
+    let song = req.body;
+    saveSongs(song)
+      .then((response) => {
+        res.status(201).send(response);
 
+    });
 
+    // GET request to get favorite songs saved in the database
+    app.post('/', (req, res) => {
+        getFavorites()
+        .then((response) => {
+          res.status(201).send(response);
+        })
+        .catch((err) => {
+          res.status(404).send(err);
+      });
 
   return router;
 };
-
