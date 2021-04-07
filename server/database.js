@@ -1,6 +1,7 @@
 // ^^^^ ****Is this neccessary on this page
 // ** do I need quotes around a token
 // ** do I need % around token
+// ** is it suppose to be db.query?
 
 //   getSongsByGenre
 //   getSongsByArtist,
@@ -12,7 +13,6 @@
 
 // select all songs by genre
 const getSongsByGenre = function(genre, res) {
-  const templateVars = {};
   const valueArr = [];
   valueArr.push(genre);
   const queryString = `
@@ -24,19 +24,16 @@ const getSongsByGenre = function(genre, res) {
   LIMIT 5;`;
 
   return db.query(queryString, valueArr)
-    .then(result => {
-      templateVars.songs = result.rows;
-      console.log("templateVars1: ", templateVars);
-      res.render("!!!!", templateVars);
-    })
-    .catch(err => {
-      console.log("err: ", err);
-    })
+  .then(result => {
+    return result.rows;
+  })
+  .catch(err => {
+    console.log("err: ", err);
+  })
 };
 
 // select all songs of an artist
 const getSongsByArtist = function(name, res) {
-  const templateVars = {};
   const valueArr = [];
   valueArr.push(name);
   const queryString = `
@@ -47,20 +44,18 @@ const getSongsByArtist = function(name, res) {
   ORDER BY artists.name
   LIMIT 5;`
 
-  return Pool.query(queryString, valueArr)
+  return db.query(queryString, valueArr)
   .then(result => {
-    templateVars.songs = result.rows;
-    console.log("templateVars2: ", templateVars);
-    res.render("!!!!", templateVars);
-    })
-    .catch(err => {
-      console.log("err: ", err);
-    })
+    return result.rows;
+  })
+  .catch(err => {
+    console.log("err: ", err);
+  })
 };
 
+// works
 // all users songs
-const getUsersSongs = function(userId, res) {
-  const templateVars = {};
+const getUsersSongs = function(userId) {
   const valueArr = [];
   valueArr.push(userId);
   const queryString = `
@@ -74,18 +69,15 @@ const getUsersSongs = function(userId, res) {
 
   return Pool.query(queryString, valueArr)
   .then(result => {
-    templateVars.songs = result.rows;
-    console.log("templateVars3: ", templateVars);
-    res.render("users", templateVars);
-    })
-    .catch(err => {
-      console.log("err: ", err);
-    })
+    return result.rows;
+  })
+  .catch(err => {
+    console.log("err: ", err);
+  })
 };
 
 // users favorite songs
 const getUsersFavoriteSongs = function(userId, res) {
-  const templateVars = {};
   const valueArr = [];
   valueArr.push(userId);
   const queryString = `
@@ -98,9 +90,7 @@ const getUsersFavoriteSongs = function(userId, res) {
 
   return Pool.query(queryString, valueArr)
   .then(result => {
-    templateVars.songs = result.rows;
-    console.log("templateVars4: ", templateVars);
-    res.render("!!!!", templateVars);
+    return result.rows;
     })
     .catch(err => {
       console.log("err: ", err);
