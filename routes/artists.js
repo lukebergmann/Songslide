@@ -16,9 +16,15 @@ module.exports = db => {
         res.render("artists", templateVars);
 
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
 
 
   // POST request that submits the new song upload info to the database (redirect to homepage)
@@ -26,8 +32,14 @@ module.exports = db => {
     console.log('Creaaate');
 
     db.query(`
-    INSERT INTO songs (song_name, price, duration, user_id, artist_id )
+    INSERT INTO songs (thumbnail_photo_url, song_url, song_name, )
       VALUES ( $1, $2, $3, $4, $5 )
+<<<<<<< HEAD
+    RETURNING *;
+    `), ([request.body.song_name,
+    ])
+      .then(({ rows: songs }) => {
+=======
       RETURNING *;
     `, [request.body.song_name,
       request.body.price,
@@ -35,6 +47,7 @@ module.exports = db => {
     request.body.user_id,
     request.body.artist_id,])
     .then(({ rows: songs }) => {
+>>>>>>> master
         response.status(201).json(songs);
       })
       .catch(e => console.error(e.stack));
@@ -56,11 +69,15 @@ module.exports = db => {
     })
     .catch(e => console.error(e.stack));
   });
+<<<<<<< HEAD
+  return router;
+=======
 
 <<<<<<< HEAD
   return router;
 }
 =======
+>>>>>>> master
 };
 >>>>>>> songs
 

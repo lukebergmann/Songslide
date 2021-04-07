@@ -25,6 +25,24 @@ module.exports = (db) => {
       .catch((error) => { console.log(error.message) });
   });
 
+
+  // POST request to get favorite songs saved in the database
+  router.get('/user/:user', (req, res) => {
+    const users = req.params.users;
+    const templateVars = {};
+    db.query(` SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
+    FROM users
+    JOIN favorites ON users.id = user_id
+    JOIN artists ON artists.id = artist_id
+    JOIN songs ON artists.id = artist_id
+    WHERE users.username = $1`, [users])
+      .then((result) => {
+        console.log(result.rows);
+        templateVars.artists = result.rows;
+        res.render("users", templateVars);
+      })
+      .catch((error) => { console.log(error.message) });
+  });
   return router;
 
 
