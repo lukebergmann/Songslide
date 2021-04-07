@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,36 +9,88 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
+
+  <!-- carousel css -->
+  <!-- <link rel="stylesheet" href="/styles/carousel.css" /> -->
+  <!-- carousel script -->
+  <script src="/scripts/carousel.js"></script>
+
   <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
+
   <!-- Google Fonts -->
   <link
     href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;0,700;1,300;1,700&display=swap"
     rel="stylesheet">
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/03a60bf669.js" crossorigin="anonymous"></script>
-  <title>SOUNDSLIDE</title>
-</head>
 
-<body>
-  <%-include('./partials/_headers') %>
+  <title>SOUNDSLIDE</title>
+  </head>
+  <body>
+    <%-include('./partials/_headers') %>
     <div class="headerContainer">
       <h4>This is SOUNDSLIDE. A non-profit music uploading platform for emerging artists. Choose how much you want to
         pay for a song. All purchases go into the pockets of the artist. </h4>
       <button type="submit">POST A TRACK</button>
     </div>
-    <div class="songContainer">
-      <ul>
+    <div id="wrapper">
+      <div id="carousel">
+        <div id="content">
         <% for (let song of songs){  %>
-
-          <li> <%= song.song_name %> </li>
-
-        <% } %>
-
-      </ul>
+          <div id="art_and_info">
+            <div>
+              <img
+              class="item"
+              src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+              />
+            </div>
+            <div class="song_info">
+              <li> <%= song.song_name %> </li>
+              <li> <%= song.name %> </li>
+              <li> <%= song.price %> </li>
+              <li> <%= song.duration %> </li>
+              <li>downloaded n times</li>
+              <form action="/users/:id" method="POST">
+                <button type="submit" action class="btn btn-primary">purchase</button>
+              </form>
+            </div>
+          </div>
+            <% } %>
+          </div>
+      </div>
+      <button id="prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+        </svg>
+      </button>
+      <button id="next">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+        </svg>
+      </button>
     </div>
-
-</body>
-
+  </body>
 </html>
+
+
+
+
+
+
+
+
+
