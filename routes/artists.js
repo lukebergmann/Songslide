@@ -57,7 +57,11 @@ module.exports = db => {
     .catch(e => console.error(e.stack));
   });
 
+<<<<<<< HEAD
   return router;
 }
+=======
+};
+>>>>>>> songs
 
 
