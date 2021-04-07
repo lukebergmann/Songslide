@@ -11,6 +11,13 @@
 
 // todo: add bio into sql queries
 
+const express = require('express');
+const router = express.Router();
+
+
+
+
+
 // select all songs by genre
 const getSongsByGenre = function(genre, res) {
   const valueArr = [];
@@ -32,8 +39,8 @@ const getSongsByGenre = function(genre, res) {
   })
 };
 
-// select all songs of an artist
-const getSongsByArtist = function(name, res) {
+
+const getSongsByArtist = function(name) {
   const valueArr = [];
   valueArr.push(name);
   const queryString = `
@@ -45,13 +52,30 @@ const getSongsByArtist = function(name, res) {
   LIMIT 5;`
 
   return db.query(queryString, valueArr)
-  .then(result => {
-    return result.rows;
-  })
-  .catch(err => {
-    console.log("err: ", err);
-  })
 };
+
+// ***************************************
+
+// select all songs of an artist
+// const getSongsByArtist = function(name, res) {
+//   const valueArr = [];
+//   valueArr.push(name);
+//   const queryString = `
+//   SELECT song_name, artists.name AS artist_name, songs.duration AS duration, songs.price AS price
+//   FROM songs
+//   JOIN artists ON artists.id = artist_id
+//   WHERE artists.name = $1
+//   ORDER BY artists.name
+//   LIMIT 5;`
+
+//   return db.query(queryString, valueArr)
+//   .then(result => {
+//     return result.rows;
+//   })
+//   .catch(err => {
+//     console.log("err: ", err);
+//   })
+// };
 
 // works
 // all users songs
@@ -98,7 +122,6 @@ const getUsersFavoriteSongs = function(userId, res) {
 };
 
 const getArtistsSongs = function(name, res) {
-  const templateVars = {};
   const valueArr = [];
   valueArr.push(name);
   const queryString = `
@@ -110,9 +133,7 @@ const getArtistsSongs = function(name, res) {
 
   return Pool.query(queryString, valueArr)
   .then(result => {
-    templateVars.songs = result.rows;
-    console.log("templateVars5: ", templateVars);
-    res.render("!!!!", templateVars);
+    return result.rows;
     })
     .catch(err => {
       console.log("err: ", err);
