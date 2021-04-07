@@ -28,14 +28,6 @@ const usersRoutes = (db) => {
   router.get("/:username", (req, res) => {
     const username = req.params.username;
     const templateVars = {};
-<<<<<<< HEAD
-    db.query('SELECT * FROM songs')
-      .then((result) => {
-        console.log(result.rows);
-        templateVars.songs = result.rows;
-        res.render("songs", templateVars);
-
-=======
     db.query(`SELECT songs.song_name, artists.name AS artist_name, songs.duration AS duration
       FROM artists
       JOIN users ON artists.id = artist_id
@@ -47,7 +39,6 @@ const usersRoutes = (db) => {
         templateVars.users = result.rows;
         console.log("#####1 ", templateVars);
         res.render("users", templateVars);
->>>>>>> master
       })
       .catch((error) => {
         console.log(error.message);
@@ -63,23 +54,17 @@ const usersRoutes = (db) => {
       });
   });
 
-<<<<<<< HEAD
 
   // GET request to get favorite songs saved in the database
-  router.get('/user/:user', (req, res) => {
-    const users = req.params.users;
-=======
-  // GET request to get favorite songs saved in the database
-  // #2
-  router.get('/:username/fav', (req, res) => {
+  router.get('/user/:username', (req, res) => {
     const username = req.params.username;
->>>>>>> master
+    console.log('>>>>>>>>>', req.params);
     const templateVars = {};
-    db.query(` SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
+    db.query(` SELECT songs.song_name, artists.name AS artist_name, songs.duration,
     FROM users
     JOIN favorites ON users.id = user_id
-    JOIN artists ON artists.id = artist_id
-    JOIN songs ON artists.id = artist_id
+    JOIN artists ON artists.id = users.artist_id
+    JOIN songs ON artists.id = songs.artist_id
     WHERE users.username = $1`, [username])
       .then((result) => {
         templateVars.favorites = result.rows;

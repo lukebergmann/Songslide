@@ -21,10 +21,6 @@ module.exports = db => {
       });
   });
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 
   // POST request that submits the new song upload info to the database (redirect to homepage)
@@ -59,7 +55,6 @@ module.exports = db => {
     })
     .catch(e => console.error(e.stack));
   });
-<<<<<<< HEAD
 
 
 
@@ -68,8 +63,3 @@ module.exports = db => {
 };
 
 
-=======
-  return router;
-
-}
->>>>>>> master
