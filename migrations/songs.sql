@@ -3,10 +3,8 @@ DROP TABLE IF EXISTS songs CASCADE;
 CREATE TABLE songs (
   id SERIAL PRIMARY KEY NOT NULL,
   song_name VARCHAR(50) NOT NULL,
-  thumbnail_photo_url VARCHAR(255) NOT NULL,
   song_url VARCHAR(255) NOT NULL,
-  price INTEGER NOT NULL,
-  duration REAL NOT NULL,
+  genre VARCHAR(25) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   artist_id INTEGER REFERENCES artists(id) ON DELETE CASCADE
 );

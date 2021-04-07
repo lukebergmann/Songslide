@@ -21,8 +21,10 @@
 <body>
   <%-include('./partials/_headers') %>
   <div id="uploadSong">
-  <form method="" action="">
-    <input type="file" id="trackImg" name="trackimage" accept="image/*">
+  <form method="post" action="">
+    <form action="/profile" method="post" enctype="multipart/form-data">
+      <input type="file" name="avatar" />
+    </form>
     <div class="rightSide">
     <input type="file" placeholder="Upload Your Track"/>
     <input type="text" placeholder="Name Your Track"/>

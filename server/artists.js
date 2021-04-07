@@ -55,6 +55,9 @@ module.exports = db => {
     })
     .catch(e => console.error(e.stack));
   });
-  return router;
 
-};
+  return router;
+}
+
+
+

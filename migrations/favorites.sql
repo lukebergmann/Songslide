@@ -5,5 +5,4 @@ CREATE TABLE favorites (
   song VARCHAR(25) NOT NULL,
   artist VARCHAR(25) NOT NULL,
   album VARCHAR(25) NOT NULL,
-  genre VARCHAR(25) NOT NULL,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE);

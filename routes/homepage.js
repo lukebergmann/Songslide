@@ -9,10 +9,8 @@ module.exports = db => {
 
 
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
-
-
-
   router.get("/", (req, res) => {
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`SELECT * FROM songs
     JOIN artists ON artists.id = artist_id`)
@@ -29,6 +27,7 @@ module.exports = db => {
 
   router.get("/genre/:genre", (req, res) => {
     const genre = req.params.genre;
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
       SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
@@ -42,13 +41,13 @@ module.exports = db => {
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
-      .catch((error) => {
-        console.log(error.message);
-      });
+      .catch((error) => { console.log(error.message) });
   });
+
 
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
+    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
       SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
