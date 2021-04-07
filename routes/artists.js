@@ -30,13 +30,10 @@ module.exports = db => {
     db.query(`
     INSERT INTO songs (thumbnail_photo_url, song_url, song_name, )
       VALUES ( $1, $2, $3, $4, $5 )
-      RETURNING *;
-    `, [request.body.song_name,
-        request.body.price,
-        request.body.duration,
-        request.body.user_id,
-        request.body.artist_id,])
-    .then(({ rows: songs }) => {
+    RETURNING *;
+    `), ([request.body.song_name,
+    ])
+      .then(({ rows: songs }) => {
         response.status(201).json(songs);
       })
       .catch(e => console.error(e.stack));
@@ -59,7 +56,7 @@ module.exports = db => {
     .catch(e => console.error(e.stack));
   });
   return router;
-};
 
+};
 
 

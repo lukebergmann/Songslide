@@ -9,6 +9,9 @@ module.exports = db => {
 
 
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
+
+
+
   router.get("/", (req, res) => {
     const templateVars = {};
     db.query(`SELECT * FROM songs
@@ -39,9 +42,10 @@ module.exports = db => {
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
-
 
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
@@ -58,31 +62,23 @@ module.exports = db => {
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
-      .catch((error) => { console.log(error.message) });
+      .catch((error) => {
+        console.log(error.message);
+      });
   });
 
-  // // POST request to save song
-  // app.post('/', (req, res) => {
-  //   let song = req.body;
-  //   saveSongs(song)
-  //     .then((response) => {
-  //       res.status(201).send(response);
-  //     })
-  //     .catch((err) => {
-  //       res.status(404).send(err);
-  //     })
-  // })
 
-  //   // GET request to get favorite songs saved in the database
-  // app.post('/', (req, res) => {
-  //   getFavorites()
-  //     .then((response) => {
-  //       res.status(201).send(response);
-  //     })
-  //     .catch((err) => {
-  //       res.status(404).send(err);
-  //     })
-  // })
+
+  // GET request to get songs that match the genre that was typed in
+  router.get('/', (req, res) => {
+    let genre = req.query;
+    if (genre) {
+      console.log('Error in GET/: ', genre);
+      res.status(404).send(genre);
+    } else {
+      res.status(200).send(genre);
+    }
+  });
 
   return router;
 }
