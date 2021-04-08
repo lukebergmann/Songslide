@@ -11,41 +11,39 @@
   - it wouldnt show sold, just how many ppl have purchased the song
 
 ## Home page
-*** mark items as SOLD!
+100% *** mark items as SOLD!
   - this could be done with an easy counter - just like the counter for tweeter
   - it wouldnt show sold, just how many ppl have purchased the song
-*** song info needs to be placed in div containers
-* album art from database displayed on screen
+100% *** song info needs to be placed in div containers
+100% * album art from database displayed on screen
+  - photos directory
 * button to "purchase" song - then redirect to users page with new song
 * slider function to donate more money
-* would look nice if each album art had a background color same as nav
-* search by artist
-* search by genre
-*** message board
+100% * search by artist
+100% * search by genre
 *** styling
+*** message board
 
 ## Users page
 *** user can favorite a song then see their favorited songs
 * User sees there purchased songs
-* does not need to display price
 * the users song info needs to be displayed on the screen
 * have users music displayed in a grid
-* display logged in in username
 *** styling
 
 ## Artists page
 *** able to remove items from the site
-*** artist can submit new song to sell
+50%*** artist can submit new song to sell
 * artist sees thier for sale songs at the bottom of screen - scroll down to see all songs
-* display logged in artist name
-*** message board
 *** styling
+*** message board
+
+#From Josiah: I'd like to add all the artists posted tracks to the bottom of artists page. To do this I have to make a change to a query in the artist route
 
 ## Database
 *** query to remove songs
-* urls for album inserted into database
-* purchased column
-
+100%* urls for album inserted into database
+100%* download column
 * query to delete song
 * query to add songs to favorites table
 
