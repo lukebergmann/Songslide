@@ -45,6 +45,7 @@
 *** query to remove songs
 * urls for album inserted into database
 * purchased column
+
 * query to delete song
 * query to add songs to favorites table
 
