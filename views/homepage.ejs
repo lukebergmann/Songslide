@@ -21,7 +21,9 @@
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
 
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/03a60bf669.js" crossorigin="anonymous"></script>
@@ -46,13 +48,14 @@
               src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
               />
             </div>
-            <div class="song_info">
-              <li> <%= song.song_name %> </li>
-              <li> <%= song.name %> </li>
-              <li> <%= song.price %> </li>
-              <li> <%= song.duration %> </li>
-              <li>downloaded n times</li>
-              <form action="/users/:id" method="POST">
+            <form action="/users" method="POST">
+            <div id="song_info">
+              <p class="song_part"><%= song.song_name %></p>
+              <p class="song_part"><%= song.name %></p>
+              <p class="song_part"><%= song.price %></p>
+              <p class="song_part"><%= song.duration %></p>
+              <p class="song_part">downloaded n times</p>
+                <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
                 <button type="submit" action class="btn btn-primary">purchase</button>
               </form>
             </div>
@@ -83,6 +86,7 @@
         </svg>
       </button>
     </div>
+    <footer>Credit: Farouk Alsajee -- Luke Bergman -- Josiah Pilon</footer>
   </body>
 </html>
 
@@ -92,5 +96,7 @@
 
 
 
-
+<!-- router.post("/users", (req, res) => {
+  req.body should include variable called song_name or something
+}) -->
 
