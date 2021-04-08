@@ -13,23 +13,32 @@
    <link
    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;0,700;1,300;1,700&display=swap"
    rel="stylesheet">
+   <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
    <!-- Font Awesome -->
    <script src="https://kit.fontawesome.com/03a60bf669.js" crossorigin="anonymous"></script>
   <title>USERS PAGE</title>
 </head>
 <body>
   <%-include('./partials/_headers') %>
-  <button type="submit">Add To Cart</button>
 
   <div class="songContainer">
+<p><%= songs.song_name %></p>
 
-    <% for (let user of users){  %>
+<div id="art_and_info">
+  <div>
+    <img
+    class="item"
+    src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+    />
+  </div>
+  <div class="song_info">
+    <li> <%= songs.song_name %> </li>
+    <li> <%= songs.genre %> </li>
+    <li>downloaded <%= songs.downloaded %> times</li>
+  </div>
+  <button type="submit">Add To Cart</button>
+</div>
 
-      <li> <%= user.song_name %>  </li>
-      <li> <%= user.artist_name %>  </li>
-      <li> <%= user.duration %>  </li>
-
-    <% } %>
 
 
 </div>
