@@ -8,7 +8,9 @@ module.exports = db => {
   // GET request to load the artist page with the songs they have already uploaded
   router.get("/", (req, res) => {
     const templateVars = {};
-    db.query('SELECT * FROM artists')
+    db.query(`SELECT * FROM artists
+    JOIN users ON artists.id = artist_id
+    JOIN songs ON users.id = user_id`)
       .then((result) => {
         templateVars.songs = result.rows;
         res.render("artists", templateVars);
@@ -29,10 +31,9 @@ module.exports = db => {
     RETURNING *;
     `, [req.body.song_name, req.body.song_url, req.body.genre
     ])
-    .then((result) => {
-      console.log(result.rows);
-      templateVars.songs = result.rows;
-      res.render("artists", templateVars);
+      .then((result) => {
+        templateVars.songs = result.rows;
+        res.render("artists", templateVars);
       })
       .catch(e => console.error(e.stack));
   });

@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
+
+
 const usersRoutes = (db) => {
 
   // GET request to the users page that shows all the users purchased songs
-  // #1
   router.get("/:username", (req, res) => {
     const username = req.params.username;
     const templateVars = {};
@@ -25,14 +26,15 @@ const usersRoutes = (db) => {
       });
   });
 
+
   // POST request to save song
-  router.post('/', (req, res) => {
-    let users = req.params.users;
-    saveSongs(users)
-      .then((users) => {
-        res.render("users", users);
-      });
-  });
+  // router.post('/', (req, res) => {
+  //   let users = req.params.users;
+  //   saveSongs(users)
+  //     .then((users) => {
+  //       res.render("users", users);
+  //     });
+  // });
 
 
   // GET request to get favorite songs saved in the database
@@ -57,17 +59,17 @@ const usersRoutes = (db) => {
   });
 
   // POST request that allows the users to remove a song from their cart
-  router.post('/', (req, res) => {
-    let deleted = req.body;
-    console.log('inside server. deleting this song: ', deleted);
-    deleteFavorite(deleted)
-      .then((response) => {
-        res.status(201).send(response);
-      })
-      .catch((err) => {
-        res.status(404).send(err);
-      });
-  });
+  // router.post('/', (req, res) => {
+  //   let deleted = req.body;
+  //   console.log('inside server. deleting this song: ', deleted);
+  //   deleteFavorite(deleted)
+  //     .then((response) => {
+  //       res.status(201).send(response);
+  //     })
+  //     .catch((err) => {
+  //       res.status(404).send(err);
+  //     });
+  // });
 
   // users can favourite items to check up on them later
   router.get('/favorites/:id', (req, res) => {
@@ -86,19 +88,19 @@ const usersRoutes = (db) => {
   });
 
   // mark your song as sold:
-  router.post("/", (req, res) => {
-    const songId = req.params.listing_id;
-    // console.log("singgg!");
-    if (!songId) {
-      return res.redirect("/");
-    }
+  // router.post("/", (req, res) => {
+  //   const songId = req.params.listing_id;
+  //   // console.log("singgg!");
+  //   if (!songId) {
+  //     return res.redirect("/");
+  //   }
 
-    db.markSongAsSold(songId)
-      .then(() => {
-        res.redirect("songs");
-      });
+  //   db.markSongAsSold(songId)
+  //     .then(() => {
+  //       res.redirect("songs");
+  //     });
 
-  });
+  // });
 
 
   return router;
