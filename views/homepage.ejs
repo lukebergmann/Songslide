@@ -56,6 +56,14 @@
               <p class="song_part"><%= song.duration %></p>
               <p class="song_part">downloaded n times</p>
                 <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
+            <div class="song_info">
+              <li> <%= song.song_name %> </li>
+              <li> <%= song.name %> </li>
+              <li> <%= song.price %> </li>
+              <li> <%= song.duration %> </li>
+              <li>downloaded n times</li>
+              <form action="/users" method="POST">
+                <input type="hidden" name="song_id" value="<%= song.id %>">
                 <button type="submit" action class="btn btn-primary">purchase</button>
               </form>
             </div>

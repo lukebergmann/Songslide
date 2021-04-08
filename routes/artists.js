@@ -22,7 +22,6 @@ module.exports = db => {
   });
 
 
-
   // POST request that submits the new song upload info to the database (redirect to homepage)
   router.post("/", (req, res) => {
     const templateVars = {}
