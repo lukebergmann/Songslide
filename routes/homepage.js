@@ -14,7 +14,6 @@ module.exports = db => {
     db.query(`SELECT * FROM songs
     JOIN artists ON artists.id = artist_id`)
       .then((result) => {
-        console.log("!!!! ", result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
@@ -24,6 +23,7 @@ module.exports = db => {
       });
   });
 
+  // GET request to search up all the songs by Genre
   router.get("/genre/:genre", (req, res) => {
     const genre = req.params.genre;
     const templateVars = {};
@@ -41,6 +41,7 @@ module.exports = db => {
   });
 
 
+ // GET request to search up all the songs by Artist
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
     const templateVars = {};
@@ -60,17 +61,6 @@ module.exports = db => {
       });
   });
 
-
-
-  // GET request to get songs that match the genre that was typed in
-  router.get('/', (req, res) => {
-    let genre = req.query;
-    if (genre) {
-      res.status(404).send(genre);
-    } else {
-      res.status(200).send(genre);
-    }
-  });
 
   return router;
 }
