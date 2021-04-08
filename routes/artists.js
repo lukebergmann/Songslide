@@ -25,8 +25,7 @@ module.exports = db => {
 
   // POST request that submits the new song upload info to the database (redirect to homepage)
   router.post("/", (req, res) => {
-    const templateVars = {}
-    console.log("req.body ========", req.body.song_url)
+    const templateVars = {};
     db.query(`
     INSERT INTO songs (song_name, song_url, genre)
       VALUES ( $1, $2, $3)
@@ -36,7 +35,7 @@ module.exports = db => {
     .then((result) => {
       console.log(result.rows);
       templateVars.songs = result.rows;
-      res.render("homepage", templateVars);
+      res.render("artists", templateVars);
       })
       .catch(e => console.error(e.stack));
   });

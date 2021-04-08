@@ -1,3 +1,7 @@
+<!-- credit: victor tuesta ascoy https://codepen.io/tuesta
+For: carousel of music -->
+<!-- Credit: Sean Stopnik https://css-tricks.com/value-bubbles-for-range-inputs/
+For: range slider -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -10,14 +14,14 @@
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/homepage.css" type="text/css" />
 
+  <!-- Jqery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
   <!-- carousel css -->
   <!-- <link rel="stylesheet" href="/styles/carousel.css" /> -->
   <!-- carousel script -->
   <script src="/scripts/carousel.js"></script>
 
-  <!-- Bootstrap -->
-  <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous"> -->
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -35,7 +39,9 @@
     <div class="headerContainer">
       <h4>This is SOUNDSLIDE. A non-profit music uploading platform for emerging artists. Choose how much you want to
         pay for a song. All purchases go into the pockets of the artist. </h4>
-      <button type="submit">POST A TRACK</button>
+      <form action="/artists" method="GET">
+        <button class="submit-button" type="submit">POST A TRACK</button>
+      </form>
     </div>
     <div id="wrapper">
       <div id="carousel">
@@ -45,18 +51,23 @@
             <div>
               <img
               class="item"
-              src="https://lh3.googleusercontent.com/0OynDYRoCaQWJIUyiOrUVeoub0mLNrDUcUZrJXF2WHQD77o-F_g2EnqZqVevO954WzD7mC5qTg=w512-h512-l90-rj"
+              src="https://images.unsplash.com/photo-1504898770365-14faca6a7320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1302&q=80"
               />
             </div>
             <form action="/users" method="POST">
             <div id="song_info">
               <p class="song_part"><%= song.song_name %></p>
               <p class="song_part"><%= song.name %></p>
-              <p class="song_part"><%= song.price %></p>
-              <p class="song_part"><%= song.duration %></p>
-              <p class="song_part">downloaded n times</p>
+              <p class="song_part"><%= song.genre %></p>
+              <p class="song_part"><%= `${song.downloaded} downloads` %></p>
+              <div>
+                <div class="range-slider">
+                  <input class="range-slider__range" type="range" value="1" min="1" max="5">
+                  <span class="range-slider__value"></span>
+                </div>
+              </div>
                 <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
-                <button type="submit" action class="btn btn-primary">purchase</button>
+                <button type="submit" class="submit-button">purchase</button>
               </form>
             </div>
           </div>

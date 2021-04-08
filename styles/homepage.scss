@@ -1,8 +1,10 @@
+// Credit: https://www.transparenttextures.com/patterns/skulls.png
+// For background texture
+
 body {
   margin-top: 120px;
   background-color: #0f0f0f;
   background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
-/* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
   font-family: 'Bangers', cursive;
   margin: 0;
   display: flex;
@@ -37,19 +39,19 @@ body {
 }
 
 .headerContainer h4 {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Titillium Web', sans-serif;
   font-weight: 600;
   margin: 1% 10%;
 }
 
 .headerContainer button {
   width: 10%;
-  margin-left: 45%;
   background-color: #282828;
   border-radius: 5%;
   color: white;
   border-radius: 15px;
   border: solid #282828 1px;
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
 }
 
 .headerContainer button:hover {
@@ -58,7 +60,8 @@ body {
   color: white;
 }
 
-/* credit for carousel: victor tuesta ascoy https://codepen.io/tuesta */
+// credit: victor tuesta ascoy https://codepen.io/tuesta
+// For: carousel of music
 
 
 #wrapper {
@@ -118,6 +121,7 @@ body {
   width: 180px;
   height: 180px;
   background: green;
+  border-radius: 10px;
 }
 
 #art_and_info {
@@ -132,10 +136,168 @@ body {
   flex-direction: column;
   align-items: center;
   background-color: #3500d3;
+  font-size: 1.3em;
+  line-height: 1.3em;
   text-decoration: none;
+  letter-spacing: 1.4px;
+  padding-top: 15px;
+  border-radius: 10px;
+
 }
 
 .song_part {
   margin: 0px;
 }
 
+.submit-button {
+  margin-bottom: 10px;
+}
+
+// Credit: Sean Stopnik https://css-tricks.com/value-bubbles-for-range-inputs/
+// For: range slider
+
+// Base Colors
+$shade-10: #2c3e50 !default;
+$shade-1: #d7dcdf !default;
+$shade-0: #fff !default;
+$teal: #1abc9c !default;
+
+
+// Reset
+* {
+  &,
+  &:before,
+  &:after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  padding: 60px 20px;
+
+  @media (min-width: 600px) {
+    padding: 60px;
+  }
+}
+
+.range-slider {
+  margin: 10px;
+}
+
+
+// Range Slider
+$range-width: 100% !default;
+
+$range-handle-color: $shade-10 !default;
+$range-handle-color-hover: $teal !default;
+$range-handle-size: 10px !default;
+
+$range-track-color: $shade-1 !default;
+$range-track-height: 5px !default;
+
+$range-label-color: $shade-10 !default;
+$range-label-width: 20px !default;
+
+.range-slider {
+  width: 100%;
+  margin: auto;
+  padding-left: 7px;
+  padding-bottom: 5px;
+}
+
+.range-slider__range {
+  -webkit-appearance: none;
+  width: calc(100% - (65px));
+  height: 5px;
+  border-radius: 5px;
+  background: #d7dcdf;
+  outline: none;
+  padding: 0;
+  margin: 0;
+
+  // Range Handle
+  &::-webkit-slider-thumb {
+    appearance: none;
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-webkit-slider-thumb {
+    background: $range-handle-color-hover;
+  }
+
+  &::-moz-range-thumb {
+    width: $range-handle-size;
+    height: $range-handle-size;
+    border: 0;
+    border-radius: 50%;
+    background: $range-handle-color;
+    cursor: pointer;
+    transition: background .15s ease-in-out;
+
+    &:hover {
+      background: $range-handle-color-hover;
+    }
+  }
+
+  &:active::-moz-range-thumb {
+    background: $range-handle-color-hover;
+  }
+
+  // Focus state
+  &:focus {
+
+    &::-webkit-slider-thumb {
+      box-shadow: 0 0 0 3px $shade-0,
+                  0 0 0 6px $teal;
+    }
+  }
+}
+
+
+// Range Label
+.range-slider__value {
+  display: inline-block;
+  position: relative;
+  width: 25%;
+  color: #fff;
+  line-height: 20px;
+  text-align: center;
+  border-radius: 3px;
+  background: #2c3e50;
+  padding: 5px 10px;
+  margin-left: 10px;
+  font-size: .75em;
+
+  &:after {
+    position: absolute;
+    top: 8px;
+    left: -7px;
+    width: 0;
+    height: 0;
+    border-top: 7px solid transparent;
+    border-right: 7px solid $range-label-color;
+    border-bottom: 7px solid transparent;
+    content: '';
+  }
+}
+
+
+// Firefox Overrides
+::-moz-range-track {
+    background: $range-track-color;
+    border: 0;
+}
+
+input::-moz-focus-inner,
+input::-moz-focus-outer {
+  border: 0;
+}

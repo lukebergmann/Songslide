@@ -10,12 +10,11 @@ module.exports = db => {
 
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
   router.get("/", (req, res) => {
-    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`SELECT * FROM songs
     JOIN artists ON artists.id = artist_id`)
       .then((result) => {
-        console.log(result.rows);
+        console.log("!!!! ", result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
@@ -27,17 +26,14 @@ module.exports = db => {
 
   router.get("/genre/:genre", (req, res) => {
     const genre = req.params.genre;
-    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
-      SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
+      SELECT *
       FROM songs
       JOIN artists ON artists.id = artist_id
       WHERE genre = $1
-      ORDER BY price
-      LIMIT 5;`, [genre])
+      ORDER BY artists.id;`, [genre])
       .then((result) => {
-        console.log(result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
@@ -47,17 +43,15 @@ module.exports = db => {
 
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
-    console.log('>>>>>>>14');
     const templateVars = {};
     db.query(`
-      SELECT songs.song_name, artists.name AS artist_name, songs.duration, songs.price
+      SELECT *
       FROM songs
       JOIN artists ON artists.id = artist_id
       WHERE artists.name = $1
       ORDER BY songs.song_name
       LIMIT 5;`, [artist])
       .then((result) => {
-        console.log(result.rows);
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);
       })
@@ -72,7 +66,6 @@ module.exports = db => {
   router.get('/', (req, res) => {
     let genre = req.query;
     if (genre) {
-      console.log('Error in GET/: ', genre);
       res.status(404).send(genre);
     } else {
       res.status(200).send(genre);

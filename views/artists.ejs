@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,49 +7,46 @@
   <!-- Stylesheets -->
   <link rel="stylesheet" href="/styles/navbar.css" type="text/css" />
   <link rel="stylesheet" href="/styles/artists.css" type="text/css" />
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+  <!-- carousel css -->
+  <!-- <link rel="stylesheet" href="/styles/carousel.css" /> -->
+  <!-- carousel script -->
+  <script src="/scripts/carousel.js"></script>
+
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,600;0,700;1,300;1,700&display=swap"
-    rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@200;300&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
+
   <!-- Font Awesome -->
   <script src="https://kit.fontawesome.com/03a60bf669.js" crossorigin="anonymous"></script>
+
   <title>Artists Page</title>
 </head>
 
 <body>
   <%-include('./partials/_headers') %>
-    <div id="uploadSong">
-      <form method="POST" action="/artists">
-        <div class="rightSide">
-          <input type="text" name="song_name" placeholder="Name Your Track">
-          <input type="text" name="song_url" placeholder="Upload Your Track">
-          <input type="text" name="genre" placeholder="Genre">
-          <input type="submit">
-        </div>
-      </form>
+  <div id="upload_song">
+    <p>
+      Post Your Track Here
+    </p>
+    <form method="POST" action="/artists">
+      <div id="post_music">
+        <input type="text" name="song_name" placeholder="Name Your Track">
+        <input type="text" name="artist_name" placeholder="Artist Name">
+        <input type="text" name="genre" placeholder="Genre">
+        <input type="submit">
+      </div>
+    </form>
+  </div>
+    <div id="artist_songs">
+      <% for(let song of songs) { %>
+      <p class="song_part"><%= song.song_name %></p>
+      <p class="song_part"><%= song.name %></p>
+      <p class="song_part"><%= song.genre %></p>
+      <p class="song_part"><%= `${song.downloaded} downloads` %></p>
+      <% } %>
     </div>
-
-    <div class="songContainer">
-
-      <% for (let artist of artists){ %>
-
-        <div>
-          <%= artist.name %> <b>(<%= artist.genre %>)</b>
-            <div>
-              <%= artist.bio %>
-            </div>
-
-        </div>
-
-        <% } %>
-
-
-    </div>
-
-
 </body>
-
 </html>
