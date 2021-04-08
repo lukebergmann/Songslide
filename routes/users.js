@@ -1,23 +1,3 @@
-
-// Users page requests:
-// POST request that allows the user to unfavorite a song
-// POST request that allows the users to remove a song from their cart >> done
-// POST request that allows the user to checkout (redirect to homepage) >> done
-
-
-// users can see featured items on a main feed >> done
-// users can filter items by price,
-// users can favourite items to check up on them later >> done
-// users can send messages to the user that is listing the item
-
-// Admins can:
-
-// post items, which can be seen by others
-// remove items from the site
-// mark items as SOLD!,
-// send a message via app, email, or text back on negotiations in buying the said item
-
-
 const express = require('express');
 const router = express.Router();
 

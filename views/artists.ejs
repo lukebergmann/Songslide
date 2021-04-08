@@ -48,5 +48,58 @@
       <p class="song_part"><%= `${song.downloaded} downloads` %></p>
       <% } %>
     </div>
+    <div id="wrapper">
+      <div id="carousel">
+        <div id="content">
+        <% for (let song of songs){  %>
+          <div id="art_and_info">
+            <div>
+              <img
+              class="item"
+              src="https://images.unsplash.com/photo-1504898770365-14faca6a7320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1302&q=80"
+              />
+            </div>
+            <form action="/users" method="POST">
+            <div id="song_info">
+              <p class="song_part"><%= song.song_name %></p>
+              <p class="song_part"><%= song.name %></p>
+              <p class="song_part"><%= song.genre %></p>
+              <p class="song_part"><%= `${song.downloaded} downloads` %></p>
+              <div>
+                <div class="range-slider">
+                  <input class="range-slider__range" type="range" value="1" min="1" max="5">
+                  <span class="range-slider__value"></span>
+                </div>
+              </div>
+                <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
+                <button type="submit" class="submit-button">purchase</button>
+              </form>
+            </div>
+          </div>
+            <% } %>
+          </div>
+      </div>
+      <button id="prev">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z" />
+        </svg>
+      </button>
+      <button id="next">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+        >
+          <path fill="none" d="M0 0h24v24H0V0z" />
+          <path d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z" />
+        </svg>
+      </button>
 </body>
 </html>

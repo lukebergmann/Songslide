@@ -7,14 +7,11 @@ module.exports = db => {
 
   // GET request to load the artist page with the songs they have already uploaded
   router.get("/", (req, res) => {
-    // console.log('>>>>>>>14');
     const templateVars = {};
     db.query('SELECT * FROM artists')
       .then((result) => {
-        console.log(result.rows);
-        templateVars.artists = result.rows;
+        templateVars.songs = result.rows;
         res.render("artists", templateVars);
-
       })
       .catch((error) => {
         console.log(error.message);
