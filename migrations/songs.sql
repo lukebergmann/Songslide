@@ -5,6 +5,7 @@ CREATE TABLE songs (
   song_name VARCHAR(50) NOT NULL,
   song_url VARCHAR(255) NOT NULL,
   genre VARCHAR(25) NOT NULL,
+  downloaded INTEGER DEFAULT 0,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   artist_id INTEGER REFERENCES artists(id) ON DELETE CASCADE
 );
