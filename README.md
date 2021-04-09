@@ -1,7 +1,7 @@
 # SOUNDSLIDE
 ## SoundSlide Description
 
-* This is SOUNDSLIDE a sliding scale, non-profit music uploading platform for emerging artists. Choose how much you want to pay for a song. All purchases go into the pockets of the artist.
+* This is SOUNDSLIDE, a sliding scale, non-profit music uploading platform for emerging artists. Choose how much you want to pay for a song. All purchases go into the pockets of the artist.
 
 
 ## Screenshots
