@@ -32,10 +32,8 @@
 <body>
   <%-include('./partials/_headers') %>
 
-<div id="wrapper">
-  <div id="carousel">
-    <div id="content">
 
+  <h2>My Cart</h2>
       <div class="songContainer">
 
 
@@ -49,18 +47,17 @@
           />
         </div>
         <div id="song_info">
-          <form action="/username/delete" method="POST">
+
           <p class="song_part"><%= song.song_name %></p>
           <p class="song_part"><%= song.artist_name %></p>
           <p class="song_part"><%= song.genre %></p>
             <input type="hidden" id="favorite" name="song_name" value=<%= song.song_name %> />
             <button type="submit" class="submit-button">Checkout</button>
-          </form>
+
         </div>
-      </div>
+
         <% } %>
-      </div>
-  </div>
+
   <button id="prev">
     <svg
       xmlns="http://www.w3.org/2000/svg"
