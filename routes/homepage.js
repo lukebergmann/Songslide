@@ -47,8 +47,7 @@ module.exports = db => {
       FROM songs
       JOIN artists ON artists.id = artist_id
       WHERE artists.name = $1
-      ORDER BY songs.song_name
-      LIMIT 5;`, [artist])
+      ORDER BY songs.song_name;`, [artist])
       .then((result) => {
         templateVars.songs = result.rows;
         res.render("homepage", templateVars);

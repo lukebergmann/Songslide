@@ -1,6 +1,6 @@
 // Credit: victor tuesta ascoy https://codepen.io/tuesta
 // For: Carousel of music
-$(document).ready(function () {
+$(document).ready(() => {
   const gap = 16;
 
   const carousel = document.getElementById("carousel"),

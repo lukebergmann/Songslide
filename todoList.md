@@ -18,7 +18,7 @@
 100% * album art from database displayed on screen
   - photos directory
 * button to "purchase" song - then redirect to users page with new song
-* slider function to donate more money
+100%* slider function to donate more money
 100% * search by artist
 100% * search by genre
 *** styling
@@ -26,9 +26,9 @@
 
 ## Users page
 *** user can favorite a song then see their favorited songs
-* User sees there purchased songs
-* the users song info needs to be displayed on the screen
-* have users music displayed in a grid
+?* User sees there purchased songs
+100% * the users song info needs to be displayed on the screen
+100%* have users music displayed in a grid
 *** styling
 
 ## Artists page
@@ -38,18 +38,16 @@
 *** styling
 *** message board
 
-#From Josiah: I'd like to add all the artists posted tracks to the bottom of artists page. To do this I have to make a change to a query in the artist route
-
 ## Database
 *** query to remove songs
 100%* urls for album inserted into database
 100%* download column
-* query to delete song
 * query to add songs to favorites table
 
 * album column for songs table
 
 ### Concerns
-* 
+* Can we delete orders.js?
+* can we delete commented post request in artists.js?
 
 

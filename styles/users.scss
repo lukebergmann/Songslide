@@ -1,3 +1,19 @@
+body {
+  margin-top: 120px;
+  background-color: #0f0f0f;
+  background-image: url("https://www.transparenttextures.com/patterns/skulls.png");
+  font-family: 'Bangers', cursive;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #000;
+  color: white;
+  height: 100%;
+  width: 100%;
+}
+
 #wrapper {
   width: 100%;
   max-width: 1067px;
@@ -86,6 +102,7 @@
 
 .submit-button {
   margin-bottom: 10px;
+  width: 100%;
 }
 
 // Credit: Sean Stopnik https://css-tricks.com/value-bubbles-for-range-inputs/

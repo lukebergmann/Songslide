@@ -17,5 +17,20 @@ VALUES
 ('Gotta Love','example_url', 'Electronic', 1258, 4, 3),
 ('Good Feather','example_url', 'Indie', 658, 5, 3),
 ('Fly Away Lane','example_url', 'Rock and Roll', 258, 1, 1),
-('Flowers','example_url', 'Electronic', 25, 1, 2);
+('Flowers','example_url', 'Electronic', 25, 1, 2),
+('Roit', 'Josiah Pilon', 'Electronic', 500, 1, 1),
+('Crossroads', 'Josiah Pilon', 'Indie', 200, 1, 1),
+('Home Again', 'Josiah Pilon', 'Electronic', 300, 1, 1),
+('We Like To Party', 'Josiah Pilon', 'Electronic', 50, 1, 1),
+('Good Times', 'Happy Gary', 'Indie', 60, 1, 2),
+('Gotta Love', 'Memories', 'Electronic', 160, 1, 2),
+('Good Feather', 'Moonbeam', 'Indie', 234, 1, 2),
+('Flowers', 'Moonbeam', 'Electronic', 789, 1, 3),
+('Dark Road', 'Farouk Alsajee', 'Indie', 345, 1, 3),
+('Midnight Truth', 'Farouk Alsajee', 'Electronic', 345, 1, 3),
+('Homiez', 'Farouk Alsajee', 'Rock and Roll', 675, 1, 3),
+('Roit', 'Farouk Alsajee', 'Electronic', 783, 1, 3),
+('Crossroads', 'Farouk Alsajee', 'Rock and Roll', 3456, 1, 3),
+('Home Again', 'Baby Indie', 'Rock and Roll', 473, 1, 3);
+
 
