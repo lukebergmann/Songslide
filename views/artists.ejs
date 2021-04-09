@@ -34,16 +34,15 @@
     <form method="POST" action="/artists">
       <div id="post_music">
         <input type="text" name="song_name" placeholder="Name Your Track">
-        <input type="text" name="artist_name" placeholder="Artist Name">
         <input type="text" name="genre" placeholder="Genre">
         <input type="submit">
       </div>
     </form>
   </div>
     <div id="artist_songs">
+      <div>Example Artist</div>
       <% for(let song of songs) { %>
       <p class="song_part"><%= song.song_name %></p>
-      <p class="song_part"><%= song.name %></p>
       <p class="song_part"><%= song.genre %></p>
       <p class="song_part"><%= `${song.downloaded} downloads` %></p>
       <% } %>

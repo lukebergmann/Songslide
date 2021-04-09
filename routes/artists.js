@@ -8,11 +8,11 @@ module.exports = db => {
   // GET request to load the artist page with the songs they have already uploaded
   router.get("/", (req, res) => {
     const templateVars = {};
-    db.query(`SELECT * FROM artists
-    JOIN users ON artists.id = artist_id
-    JOIN songs ON users.id = user_id`)
+    db.query(`SELECT * FROM songs
+    WHERE artist_id = 1`)
       .then((result) => {
-        templateVars.songs = result.rows;
+        const sortedSongs = result.rows.sort((a, b) => b.id - a.id)
+        templateVars.songs = sortedSongs
         res.render("artists", templateVars);
       })
       .catch((error) => {
@@ -25,18 +25,23 @@ module.exports = db => {
   // POST request that submits the new song upload info to the database (redirect to homepage)
   router.post("/", (req, res) => {
     const templateVars = {};
-    db.query(`
-    INSERT INTO songs (song_name, song_url, genre)
-      VALUES ( $1, $2, $3)
-    RETURNING *;
-    `, [req.body.song_name, req.body.song_url, req.body.genre
-    ])
-      .then((result) => {
-        templateVars.songs = result.rows;
-        res.render("artists", templateVars);
-      })
-      .catch(e => console.error(e.stack));
-  });
+    db.query(`INSERT INTO songs (artist_id, song_name, genre)
+    VALUES (1, $1, $2)
+    RETURNING *;`, [req.body.song_name, req.body.genre])
+
+        .then((result) => {
+         return db.query(`SELECT * FROM songs
+          WHERE artist_id = 1`)
+          console.log("what is result", result)
+        })
+        .then((result) => {
+        const sortedSongs = result.rows.sort((a, b) => b.id - a.id)
+           templateVars.songs = sortedSongs
+              res.render("artists", templateVars);
+          })
+          .catch(e => console.error(e.stack));
+      });
+
 
 
   // POST request that allows the artist to delete a song from their page
