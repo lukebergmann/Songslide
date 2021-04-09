@@ -3,9 +3,6 @@ const artists = require('./artists');
 const router = express.Router();
 
 module.exports = db => {
-  // Homepage requests:
-  // POST request that adds a song to their users page where they can checkout
-  // POST request that allows a user to favorite a song
 
 
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)

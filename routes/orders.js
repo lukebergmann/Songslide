@@ -2,8 +2,6 @@ const router = require("express").Router();
 const SONG = require("../../songs");
 
 module.exports = db => {
-
-
   // route to get all the orders. Should be protected, only on Dev/Test
   if (SONG === "songs") {
     router.get("/orders", (request, response) => {
