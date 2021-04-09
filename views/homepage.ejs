@@ -46,8 +46,7 @@ For: range slider -->
       <div id="carousel">
         <div id="content">
         <% for (let song of songs){  %>
-
-          <div id="art_and_info_<%=song.id%>" onclick='submit_form("form_<%= song.id %>")' >
+          <div id="art_and_info>" onclick='submit_form("form_<%= song.id %>")' >
             <div>
               <img
               class="item"
@@ -68,8 +67,6 @@ For: range slider -->
               </div>
                 <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
                 <input type="hidden" name="id" value="<%= song.id %>">
-
-                <!-- <button type="submit" class="submit-button">purchase</button> -->
               </form>
             </div>
           </div>

@@ -7,8 +7,7 @@ const usersRoutes = (db) => {
 
   // GET request to the display song on users page
   // #1
-  router.get("/:id", (req, res) => {
-    console.log('abccccc');
+  router.get("/user/:id", (req, res) => {
     const templateVars = {};
     db.query(`SELECT * FROM songs
       WHERE songs.id = $1
