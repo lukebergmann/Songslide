@@ -1,10 +1,4 @@
 # SOUNDSLIDE
-
-Farouk Alsajee: faroukalsajee@gmail.com
-Luke Bergmann: lukebergmann0@gmail.com
-Josiah Pilon: josiah.pilon@yahoo.ca
-
-
 ## SoundSlide Description
 
 * This is SOUNDSLIDE a sliding scale, non-profit music uploading platform for emerging artists. Choose how much you want to pay for a song. All purchases go into the pockets of the artist.
@@ -44,3 +38,7 @@ Josiah Pilon: josiah.pilon@yahoo.ca
   pg ^6.4.2
   pg-native ^3.0.0
 
+## Contact us! 
+* Farouk Alsajee: faroukalsajee@gmail.com
+* Luke Bergmann: lukebergmann0@gmail.com
+* Josiah Pilon: josiah.pilon@yahoo.ca
