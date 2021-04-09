@@ -6,50 +6,19 @@ const router = express.Router();
 const usersRoutes = (db) => {
 
   // GET request to the users page that shows all the users purchased songs
-  router.get("/:username", (req, res) => {
-    const username = req.params.username;
+  router.get("/:userId", (req, res) => {
+    const userId = req.params.userId;
     const templateVars = {};
-    db.query(`SELECT songs.song_name, artists.name AS artist_name, songs.duration AS duration
+
+    db.query(`SELECT songs.song_name, artists.name AS artist_name, songs.genre AS genre
       FROM artists
-      JOIN users ON artists.id = artist_id
-      JOIN songs ON users.id = user_id
-      WHERE users.username = $1
+      JOIN songs ON artists.id = songs.artist_id
+      JOIN users ON artists.id = users.artist_id
+      WHERE users.id = $1
       ORDER BY artist_name
-      LIMIT 5;`, [username])
+      LIMIT 5;`, [userId])
       .then((result) => {
-        templateVars.users = result.rows;
-        console.log("#####1 ", templateVars);
-        res.render("users", templateVars);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  });
-
-
-  // POST request to save song
-  // router.post('/', (req, res) => {
-  //   let users = req.params.users;
-  //   saveSongs(users)
-  //     .then((users) => {
-  //       res.render("users", users);
-  //     });
-  // });
-
-
-  // GET request to get favorite songs saved in the database
-  router.get('/user/:username', (req, res) => {
-    const username = req.params.username;
-    console.log('>>>>>>>>>', req.params);
-    const templateVars = {};
-    db.query(` SELECT songs.song_name, artists.name AS artist_name, songs.duration,
-    FROM users
-    JOIN favorites ON users.id = user_id
-    JOIN artists ON artists.id = users.artist_id
-    JOIN songs ON artists.id = songs.artist_id
-    WHERE users.username = $1`, [username])
-      .then((result) => {
-        templateVars.favorites = result.rows;
+        templateVars.songs = result.rows;
         console.log("#2 ", templateVars);
         res.render("users", templateVars);
       })
@@ -58,50 +27,41 @@ const usersRoutes = (db) => {
       });
   });
 
-  // POST request that allows the users to remove a song from their cart
-  // router.post('/', (req, res) => {
-  //   let deleted = req.body;
-  //   console.log('inside server. deleting this song: ', deleted);
-  //   deleteFavorite(deleted)
-  //     .then((response) => {
-  //       res.status(201).send(response);
-  //     })
-  //     .catch((err) => {
-  //       res.status(404).send(err);
-  //     });
-  // });
-
-  // users can favourite items to check up on them later
-  router.get('/favorites/:id', (req, res) => {
-    console.log('return 444');
-    const user = req.params.id;
+  // GET request to get favorite songs saved in the database
+  router.get('/fav/:userId', (req, res) => {
+    const userId = req.params.userId;
     const templateVars = {};
-    db.query(` SELECT * FROM favorites WHERE user_id = $1`, [user])
+
+    db.query(` SELECT songs.song_name, artists.name AS artist_name
+    FROM artists
+    JOIN users ON artists.id = users.artist_id
+    JOIN songs ON artists.id = songs.artist_id
+    JOIN favorites ON users.id = users_id
+    WHERE users.id = $1`, [userId])
       .then((result) => {
-        console.log(result.rows);
-        templateVars.favorites = result.rows;
-        res.render("favorites", templateVars);
+        templateVars.songs = result.rows;
+        res.render("users", templateVars);
       })
       .catch((error) => {
         console.log(error.message);
       });
   });
 
-  // mark your song as sold:
-  // router.post("/", (req, res) => {
-  //   const songId = req.params.listing_id;
-  //   // console.log("singgg!");
-  //   if (!songId) {
-  //     return res.redirect("/");
-  //   }
-
-  //   db.markSongAsSold(songId)
-  //     .then(() => {
-  //       res.redirect("songs");
+  // users can favourite items to check up on them later
+  // router.post('/fav/:id', (req, res) => {
+  //   console.log('return 444');
+  //   const user = req.params.id;
+  //   const templateVars = {};
+  //   db.query(` SELECT * FROM favorites WHERE user_id = $1`, [user])
+  //     .then((result) => {
+  //       console.log(result.rows);
+  //       templateVars.songs = result.rows;
+  //       res.render("favorites", templateVars);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
   //     });
-
   // });
-
 
   return router;
 };
