@@ -28,6 +28,7 @@
 <body>
   <%-include('./partials/_headers') %>
   <div id="upload_song">
+    <div id="exampleArtist">Example Artist</div>
     <p>
       Post Your Track Here
     </p>
@@ -40,12 +41,8 @@
     </form>
   </div>
     <div id="artist_songs">
-      <div>Example Artist</div>
-      <% for(let song of songs) { %>
-      <p class="song_part"><%= song.song_name %></p>
-      <p class="song_part"><%= song.genre %></p>
-      <p class="song_part"><%= `${song.downloaded} downloads` %></p>
-      <% } %>
+
+
     </div>
     <div id="wrapper">
       <div id="carousel">
