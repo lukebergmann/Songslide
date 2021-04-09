@@ -48,14 +48,14 @@ For: range slider -->
         <div id="content">
         <% for (let song of songs){  %>
 
-          <div id="art_and_info">
+          <div id="art_and_info_<%=song.id%>" onclick='submit_form("form_<%= song.id %>")' >
             <div>
               <img
               class="item"
               src="https://images.unsplash.com/photo-1504898770365-14faca6a7320?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1302&q=80"
               />
             </div>
-            <form action="/users" method="POST">
+            <form action="/users/<%=song.id %>" method="POST" id="form_<%= song.id %>">
             <div id="song_info">
               <p class="song_part"><%= song.song_name %></p>
               <p class="song_part"><%= song.name %></p>
@@ -68,7 +68,9 @@ For: range slider -->
                 </div>
               </div>
                 <input type="hidden" id="purchase" name="song_name" value=<%= song.song_name %> />
-                <button type="submit" class="submit-button">purchase</button>
+                <input type="hidden" name="id" value="<%= song.id %>">
+
+                <!-- <button type="submit" class="submit-button">purchase</button> -->
               </form>
             </div>
           </div>
@@ -100,6 +102,15 @@ For: range slider -->
     </div>
     <footer>Credit: Farouk Alsajee -- Luke Bergman -- Josiah Pilon</footer>
   </body>
+  <script>
+    function submit_form(formId){
+      //alert('submit to ' + formId);
+      var song_form = document.getElementById(formId);
+
+      song_form.submit();
+
+    }
+  </script>
 </html>
 
 

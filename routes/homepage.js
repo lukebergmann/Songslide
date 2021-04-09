@@ -8,7 +8,7 @@ module.exports = db => {
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
   router.get("/", (req, res) => {
     const templateVars = {};
-    db.query(`SELECT * FROM songs
+    db.query(`SELECT songs.* FROM songs
     JOIN artists ON artists.id = artist_id`)
       .then((result) => {
         templateVars.songs = result.rows;
@@ -60,4 +60,4 @@ module.exports = db => {
 
 
   return router;
-}
+};

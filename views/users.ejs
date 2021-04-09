@@ -31,9 +31,15 @@
 </head>
 <body>
   <%-include('./partials/_headers') %>
+
 <div id="wrapper">
   <div id="carousel">
     <div id="content">
+
+      <div class="songContainer">
+
+
+    </div>
     <% for (let song of songs){  %>
       <div id="art_and_info">
         <div>
@@ -47,6 +53,7 @@
           <p class="song_part"><%= song.song_name %></p>
           <p class="song_part"><%= song.artist_name %></p>
           <p class="song_part"><%= song.genre %></p>
+          <p class="song_part"><%= `${song.downloaded} downloads` %></p>
           <div>
             <div class="range-slider">
               <input class="range-slider__range" type="range" value="1" min="1" max="5">

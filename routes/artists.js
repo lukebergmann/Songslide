@@ -31,12 +31,12 @@ module.exports = db => {
 
         .then((result) => {
          return db.query(`SELECT * FROM songs
-          WHERE artist_id = 1`)
+          WHERE artist_id = 1`);
           console.log("what is result", result)
         })
         .then((result) => {
-        const sortedSongs = result.rows.sort((a, b) => b.id - a.id)
-           templateVars.songs = sortedSongs
+        const sortedSongs = result.rows.sort((a, b) => b.id - a.id);
+           templateVars.songs = sortedSongs;
               res.render("artists", templateVars);
           })
           .catch(e => console.error(e.stack));
