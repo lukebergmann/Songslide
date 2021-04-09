@@ -5,6 +5,24 @@ const router = express.Router();
 
 const usersRoutes = (db) => {
 
+  // GET request to the display song on users page
+  // #1
+  router.get("/:id", (req, res) => {
+    console.log('abccccc');
+    const templateVars = {};
+    db.query(`SELECT * FROM songs
+      WHERE songs.id = $1
+      `, [req.params.id])
+      .then((result) => {
+        templateVars.users = result.rows;
+        console.log("#####1 ", templateVars);
+        res.render("users", templateVars);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  });
+
   // GET request to the users page that shows all the users purchased songs
   router.get("/:username", (req, res) => {
     const username = req.params.username;
@@ -61,7 +79,25 @@ const usersRoutes = (db) => {
       });
   });
 
-  return router;
-};
+   // function to display a song in a new page
+  router.post("/:id", (req, res) => {
+    console.log('Getting song id from homepage', req.body);
+    const songId = req.params.id;
+    console.log("song id = " + songId);
+    if (!songId) {
+      return res.redirect("/");
+    }
+    const templateVars = {};
 
+    db.query(`Select * from songs where id = $1`,[songId])
+      .then((result) => {
+        templateVars.songs = result.rows;
+        res.render("users", templateVars);
+      });
+
+  });
+
+  return router;
+
+};
 module.exports = usersRoutes;
