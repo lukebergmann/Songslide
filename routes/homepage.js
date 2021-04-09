@@ -8,10 +8,11 @@ module.exports = db => {
   // GET request to the homepage which loads all the songs in the database to the homepage (Done)
   router.get("/", (req, res) => {
     const templateVars = {};
-    db.query(`SELECT songs.* FROM songs
+    return db.query(`SELECT songs.* FROM songs
     JOIN artists ON artists.id = artist_id`)
       .then((result) => {
-        templateVars.songs = result.rows;
+        const sortedSongs = result.rows.sort((a, b) => b.id - a.id);
+        templateVars.songs = sortedSongs;
         res.render("homepage", templateVars);
       })
       .catch((error) => {
@@ -38,7 +39,7 @@ module.exports = db => {
   });
 
 
- // GET request to search up all the songs by Artist
+// GET request to search up all the songs by Artist
   router.get("/artist/:artist", (req, res) => {
     const artist = req.params.artist;
     const templateVars = {};

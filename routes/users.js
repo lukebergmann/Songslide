@@ -43,23 +43,23 @@ const usersRoutes = (db) => {
       });
   });
 
-  router.post("/username/delete/:songId", (req, res) => {
-    const songId = req.params.songId;
-    console.log("params: ", req.params);
-    const templateVars = {};
+  // router.post("/username/delete/:songId", (req, res) => {
+  //   const songId = req.params.songId;
+  //   console.log("params: ", req.params);
+  //   const templateVars = {};
 
-    db.query(`
-    DELETE
-    FROM songs
-    WHERE id = $1`, [songId])
-      .then((result) => {
-        templateVars.songs = result.rows;
-        res.render("users", templateVars);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  });
+  //   db.query(`
+  //   DELETE
+  //   FROM songs
+  //   WHERE id = $1`, [songId])
+  //     .then((result) => {
+  //       templateVars.songs = result.rows;
+  //       res.render("users", templateVars);
+  //     })
+  //     .catch((error) => {
+  //       console.log(error.message);
+  //     });
+  // });
 
   // GET request to get favorite songs saved in the database
   router.get('/fav/:username', (req, res) => {
@@ -79,7 +79,7 @@ const usersRoutes = (db) => {
       });
   });
 
-   // function to display a song in a new page
+  // function to display a song in a new page
   router.post("/:id", (req, res) => {
     console.log('Getting song id from homepage', req.body);
     const songId = req.params.id;
