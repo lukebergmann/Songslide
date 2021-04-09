@@ -12,9 +12,9 @@ Josiah Pilon: josiah.pilon@yahoo.ca
 
 ## Screenshots
 
-!["Screenshot of Song Sliding Carousel"]()
-!["Screenshot of Hover and Song Purchase"]()
-!["Screenshot of Song Upload from Artist Page"]()
+!["Screenshot of Song Sliding Carousel"](https://github.com/lukebergmann/midterm-buyandsell/blob/master/docs/SliderEffect.gif?raw=true)
+!["Screenshot of Hover and Song Purchase"](https://github.com/lukebergmann/midterm-buyandsell/blob/master/docs/HoverEffect.gif?raw=true)
+!["Screenshot of Song Upload from Artist Page"](https://github.com/lukebergmann/midterm-buyandsell/blob/master/docs/ArtistSongUpload.gif?raw=true)
 
 
 ## Features
